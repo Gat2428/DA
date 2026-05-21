@@ -36,8 +36,7 @@ void mergesort(int a[10], int left, int right)
 int main()
 {
  int i, j, n, a[10];
-DAA Lab Programs Design & Analysis of Algorithms | C Programming
-For Study Use Only Page 8 of 27 C Programming
+
  printf("\nEnter no of elements: ");
  scanf("%d", &n);
  printf("\nEnter elements\n");
