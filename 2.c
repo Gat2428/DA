@@ -37,7 +37,6 @@ mergesort(a,mid+1,right);
 merge(a,left,mid,right);
 }
 }
-Dept. of CSE, GAT 17 DAA LAB-CSEL23409
 int main()
 {
 int i,j,n,a[10];
