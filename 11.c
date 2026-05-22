@@ -36,8 +36,6 @@ int main()
  scanf("%d", &cost[i][j]);
  printf("Enter the source (%d to %d):\n", 1, n);
  scanf("%d", &sourceNode);
-DAA Lab Programs Design & Analysis of Algorithms | C Programming
-For Study Use Only Page 24 of 27 C Programming
  for (i = 1; i <= n; i++)
  {
  d[i] = cost[sourceNode][i];
