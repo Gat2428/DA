@@ -32,7 +32,6 @@ void quicksort(int a[10],int low,int high) {
 int i,j;
 if(low < high) {
 j = partition(a, low, high);
-Dept. of CSE, GAT 20 DAA LAB-CSEL23409
 quicksort(a, low, j-1);
 quicksort(a, j+1, high);
 }
