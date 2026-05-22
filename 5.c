@@ -41,8 +41,6 @@ int main()
  int n, edges, u, v;
  printf("Enter the number of vertices: ");
  scanf("%d", &n);
-DAA Lab Programs Design & Analysis of Algorithms | C Programming
-For Study Use Only Page 12 of 27 C Programming
  printf("Enter the number of edges: ");
  scanf("%d", &edges);
  for (int i=1; i<=n; i++)
