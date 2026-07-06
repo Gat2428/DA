@@ -1,47 +1,48 @@
-#include<stdio.h>
-#include<string.h>
-#define MAX 256
-void createShiftTable (char *pattern, int patternLength, int shiftTable[])
-{
- for(int i=0; i<MAX; i++)
- shiftTable[i] = patternLength;
- for(int i=0; i<patternLength - 1; i++)
- shiftTable[(unsigned char) pattern[i]] = patternLength - 1 - i;
-}
-int horsepoolmatch (char *text, char *pattern)
-{
- int textLength = strlen(text);
- int patternLength = strlen(pattern);
- int shiftTable[MAX];
- createShiftTable(pattern, patternLength, shiftTable);
- int i = patternLength - 1;
- while(i<textLength)
- {
- int k = 0;
- while(k<patternLength && pattern[patternLength - 1 - k] == text[i-k])
- k++;
- if(k==patternLength)
- return i-patternLength+1;
- else
- i+=shiftTable[(unsigned char) text[i]];
- }
- return -1;
-}
+#include <stdio.h>
+#include <string.h>
+
 int main()
 {
- char text[100], pattern[50];
- printf("Enter the text: ");
- //scanf("%d", text);
- fgets(text, sizeof(text), stdin);
- text[strcspn(text, "\n")] = '\0';
- printf("Enter the pattern: ");
- //scanf("%d", pattern);
- fgets(pattern, sizeof(pattern), stdin);
- pattern[strcspn(pattern, "\n")] = '\0';
- int position = horsepoolmatch(text, pattern);
- if(position != -1)
- printf("Position found at %d position\n", position);
- else
- printf("Pattern not found in the text\n");
- return 0;
+    char text[100], pattern[100];
+    int table[256];
+    int i, j, m, n;
+
+    printf("Enter the text: ");
+    scanf("%s", text);
+
+    printf("Enter the pattern: ");
+    scanf("%s", pattern);
+
+    n = strlen(text);
+    m = strlen(pattern);
+
+    // Initialize shift table
+    for(i = 0; i < 256; i++)
+        table[i] = m;
+
+    for(i = 0; i < m - 1; i++)
+        table[(int)pattern[i]] = m - 1 - i;
+
+    // Horsepool algorithm
+    i = m - 1;
+
+    while(i < n)
+    {
+        j = 0;
+
+        while(j < m && pattern[m - 1 - j] == text[i - j])
+            j++;
+
+        if(j == m)
+        {
+            printf("Pattern found at position %d\n", i - m + 2);
+            return 0;
+        }
+
+        i = i + table[(int)text[i]];
+    }
+
+    printf("Pattern not found\n");
+
+    return 0;
 }
